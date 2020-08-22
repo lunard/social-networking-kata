@@ -57,9 +57,18 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="CompareFiles" />
+    <Folder Include="User\" />
+    <Folder Include="User\Tables\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CompareFiles\DatabaseToProject.scmp" />
     <None Include="CompareFiles\ProjectToDatabase.scmp" />
+    <None Include="CompareFiles\DatabaseToProject.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="User\Tables\Message.sql" />
+    <Build Include="User\Tables\Folllower.sql" />
+    <Build Include="User\Tables\User.sql" />
+    <Build Include="Security\User.sql" />
   </ItemGroup>
 </Project>
