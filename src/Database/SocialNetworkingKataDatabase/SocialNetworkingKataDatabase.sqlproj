@@ -60,5 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="CompareFiles\DatabaseToProject.scmp" />
+    <None Include="CompareFiles\ProjectToDatabase.scmp" />
   </ItemGroup>
 </Project>
