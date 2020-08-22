@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace User.Domain
+﻿namespace User.Domain
 {
     public class Class1
     {
