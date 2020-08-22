@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetworkingKata", "SocialNetworkingKata\SocialNetworkingKata.csproj", "{0E44DDAC-26F6-4983-8008-6203593544F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5D705CB5-526E-4F6C-A0D1-9BE71290BFF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{C02DC0B6-5BC8-4A64-8CC6-1809F950FFC7}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SocialNetworkingKataDatabase", "Database\SocialNetworkingKataDatabase\SocialNetworkingKataDatabase.sqlproj", "{C6D3AD06-62F0-4CA8-8427-E872144D41EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E44DDAC-26F6-4983-8008-6203593544F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E44DDAC-26F6-4983-8008-6203593544F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E44DDAC-26F6-4983-8008-6203593544F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E44DDAC-26F6-4983-8008-6203593544F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6D3AD06-62F0-4CA8-8427-E872144D41EE} = {C02DC0B6-5BC8-4A64-8CC6-1809F950FFC7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E19358E-018D-4646-9DEC-7259819ECCF0}
+	EndGlobalSection
+EndGlobal
