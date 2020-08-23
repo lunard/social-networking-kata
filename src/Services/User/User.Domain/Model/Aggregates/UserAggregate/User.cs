@@ -14,9 +14,9 @@ namespace User.Domain.Model.Aggregates.UserAggregate
 
         public string Name { get; private set; }
 
-        public IReadOnlyCollection<Message> Messages => _messages;
-        public IReadOnlyCollection<Follower> Followers => _followers;
-        public IReadOnlyCollection<Follower> FollowedList => _followedList;
+        public ICollection<Message> Messages => _messages;
+        public ICollection<Follower> Followers => _followers;
+        public ICollection<Follower> FollowedList => _followedList;
 
         public User()
         {
