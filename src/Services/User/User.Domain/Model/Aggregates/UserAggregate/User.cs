@@ -30,16 +30,11 @@ namespace User.Domain.Model.Aggregates.UserAggregate
             Name = name;
         }
 
-        public bool PostMessage(string content)
+        public bool AddMessage(Message m)
         {
             try
             {
-                _messages.Add(new Message()
-                {
-                    UserId = Id,
-                    Date = DateTime.Now,
-                    Content = content
-                });
+                _messages.Add(m);
 
                 return true;
             }

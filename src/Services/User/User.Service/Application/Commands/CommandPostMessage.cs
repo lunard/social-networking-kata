@@ -11,7 +11,7 @@ namespace User.Service.Application.Commands
         private string _content;
         public String Content => _content;
 
-        public CommandPostMessage(string content, string userName): base (userName)
+        public CommandPostMessage(string userName, string content): base (userName)
         {
             _content = !ValidateContent(content) ? throw new InvalidOperationException("Message content is not valid") : content;
         }
