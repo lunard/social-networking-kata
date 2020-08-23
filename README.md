@@ -2,6 +2,8 @@
 Excercise that aims to implement a console-based social networking application (similar to Twitter) satisfying the scenarios described in the User Stories.
 (See user stories and Task in the public page of my Azure DevOps: https://dev.azure.com/lunard/Social%20Networking%20Kata/_workitems/recentlyupdated/)
 
+![alt Final result](./SocialNetworkingKataConsole.jpg)
+
 # Where I spent my time
 I focused not on the ConsoleApplication itself, but on the Services/Infrastructure/Database part of the architecture.
 I followed the DDD design, to implement and show a Clean Architecture.
