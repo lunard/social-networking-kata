@@ -18,13 +18,13 @@ The user creation is not specified in the User Stories.
 Assumption: only the Users insert using the post deployment script can be used at runtime
 
 # What is missing in the Program class
-Generic Host: would be really better to implement the console application with a GenericHost, using the HostBuilder
-Logging ... Serilog with its Skins !!
-Dependency Injection using Autofac
+- Generic Host: would be really better to implement the console application with a GenericHost, using the HostBuilder
+- Logging ... Serilog with its Skins !!
+- Dependency Injection using Autofac
 
 # What is missing in the User.Service project
-Could be useful to decuple the code execution using the mediator pattern (eg via MediatR)
-To get all Messages would be better to use AutoMapper!
+- Could be useful to decuple the code execution using the mediator pattern (eg via MediatR)
+- To get all Messages would be better to use AutoMapper!
 
 # What is missing in the Test
-Sure we have to mock the repository (eg via Moq); In this case the test is working directly with the DB (eventually I should bootstrap the DB)
+- Sure we have to mock the repository (eg via Moq); In this case the test is working directly with the DB (eventually I should bootstrap the DB)
