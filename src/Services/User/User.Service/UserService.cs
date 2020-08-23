@@ -55,6 +55,9 @@ namespace User.Service
             var followerUser = (await _userRepository.FindAsync(u => u.Name == command.UserName, include: o => o.Include(u => u.FollowedList))).FirstOrDefault();
             var followedUser = (await _userRepository.FindAsync(u => u.Name == command.FollowedUserName, include: o => o.Include(u => u.Followers))).FirstOrDefault();
 
+            if (followedUser == null || followerUser == null)
+                return false;
+
             var follower = new FollowerModel()
             {
                 DateFrom = DateTime.Now,
@@ -76,6 +79,24 @@ namespace User.Service
         public async Task<IEnumerable<MessageViewModel>> ViewTimeline(CommandViewTimeline command)
         {
             var result = new List<MessageViewModel>();
+
+            var user = (await _userRepository.FindAsync(u => u.Name == command.UserName, include: o => o.Include(u => u.Messages))).FirstOrDefault();
+
+            if (user == null)
+                throw new Exception($"User {command.UserName} not found!");
+
+            // here would be better to use AutoMapper
+            foreach (var message in user.Messages)
+            {
+                MessageViewModel m = new MessageViewModel()
+                {
+                    Content = message.Content,
+                    UserName = command.UserName,
+                    Date = message.Date
+                };
+
+                result.Add(m);
+            }
 
             return result;
         }
