@@ -12,9 +12,9 @@ namespace User.Service.Application.Commands
         private string _followedUserName;
         public String FollowedUserName => _followedUserName;
 
-        public CommandSubscribe(string followedUserName, string userName) : base(userName)
+        public CommandSubscribe(string followerUserName, string followedUserName) : base(followerUserName)
         {
-            _followedUserName = userName == _followedUserName ? throw new DuplicateNameException($"User '{followedUserName}' already followed by '{userName}'") : followedUserName;
+            _followedUserName = followerUserName == _followedUserName ? throw new DuplicateNameException($"User '{followedUserName}' already followed by '{followerUserName}'") : followedUserName;
         }
     }
 }

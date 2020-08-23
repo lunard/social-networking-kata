@@ -44,11 +44,11 @@ namespace User.Domain.Model.Aggregates.UserAggregate
             }
         }
 
-        public bool AddFollower(Follower f)
+        public bool AddFollowed(Follower f)
         {
             try
             {
-                _followers.Add(f);
+                _followedList.Add(f);
 
                 return true;
             }

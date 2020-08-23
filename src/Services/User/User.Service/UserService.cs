@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using User.Domain.Model.Aggregates.UserAggregate;
 using User.Service.Application.Commands;
 using UserModel = User.Domain.Model.Aggregates.UserAggregate.User;
+using FollowerModel = User.Domain.Model.Aggregates.UserAggregate.Follower;
+
 namespace User.Service
 {
     public class UserService : IUserService
@@ -44,6 +46,29 @@ namespace User.Service
             }
 
             return result;
+        }
+
+        public async Task<bool> Subscribe(CommandSubscribe command)
+        {
+            var followerUser = (await _userRepository.FindAsync(u => u.Name == command.UserName, include: o => o.Include(u => u.FollowedList))).FirstOrDefault();
+            var followedUser = (await _userRepository.FindAsync(u => u.Name == command.FollowedUserName, include: o => o.Include(u => u.Followers))).FirstOrDefault();
+
+            var follower = new FollowerModel()
+            {
+                DateFrom = DateTime.Now,
+                FollowerId = followerUser.Id,
+                FollowedId = followedUser.Id
+            };
+
+            var result = followedUser.AddFollowed(follower);
+
+            if (result)
+            {
+                await _userRepository.UpdateAsync(followedUser);
+                result = await _userRepository.UnitOfWork.SaveChangesAsync();
+            }
+
+            return true;
         }
     }
 }
