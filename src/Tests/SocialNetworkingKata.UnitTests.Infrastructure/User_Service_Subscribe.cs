@@ -14,12 +14,12 @@ using SocialNetworkingKata.Infrastructure.Data.Interfaces;
 
 namespace SocialNetworkingKata.UnitTests.Services.Infrastructure
 {
-    public class User_Service_Sybscribe
+    public class User_Service_Subscribe
     {
         UserService userService;
         IAsyncRepository<UserModel> userRepository;
 
-        public User_Service_Sybscribe()
+        public User_Service_Subscribe()
         {
             IConfiguration configuration = ConfigurationHelper.BuildConfiguration(AppDomain.CurrentDomain.BaseDirectory);
 
