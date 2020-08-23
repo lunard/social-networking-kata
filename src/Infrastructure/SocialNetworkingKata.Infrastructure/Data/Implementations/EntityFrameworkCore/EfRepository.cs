@@ -58,9 +58,6 @@ namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFramewo
                 (_unitOfWork.GetContext() as DbContext).Entry(local).State = EntityState.Detached;
                 await _unitOfWork.SaveChangesAsync();
             }
-            // set Modified flag in your entry
-            (_unitOfWork.GetContext() as DbContext).Entry(entity).State = EntityState.Modified;
-
             _dbSet.Update(entity);
         }
 
