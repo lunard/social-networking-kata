@@ -47,11 +47,21 @@ namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFramewo
             return await _dbSet.ToListAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            _dbSet.Update(entity);
+            var local = (_unitOfWork.GetContext() as DbContext).Set<T>().Local.FirstOrDefault(entry => entry.Id.Equals(entity.Id));
 
-            return Task.CompletedTask;
+            // check if local is not null 
+            if (local != null)
+            {
+                // detach
+                (_unitOfWork.GetContext() as DbContext).Entry(local).State = EntityState.Detached;
+                await _unitOfWork.SaveChangesAsync();
+            }
+            // set Modified flag in your entry
+            (_unitOfWork.GetContext() as DbContext).Entry(entity).State = EntityState.Modified;
+
+            _dbSet.Update(entity);
         }
 
         public async Task<IReadOnlyList<T>> FindAsync(

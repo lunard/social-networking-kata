@@ -44,12 +44,12 @@ namespace User.Domain.Model.Aggregates.UserAggregate
             }
         }
 
-        public bool AddFollowed(Follower follower)
+        public bool AddFollower(Follower follower)
         {
             try
             {
-                if (!_followedList.Any(f => f.FollowedId == follower.FollowedId && f.FollowerId == follower.FollowerId))
-                    _followedList.Add(follower);
+                if (!_followers.Any(f => f.FollowedId == follower.FollowedId && f.FollowerId == follower.FollowerId))
+                    _followers.Add(follower);
 
                 return true;
             }

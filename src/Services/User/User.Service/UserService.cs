@@ -65,7 +65,7 @@ namespace User.Service
                 FollowedId = followedUser.Id
             };
 
-            var result = followedUser.AddFollowed(follower);
+            var result = followedUser.AddFollower(follower);
 
             if (result)
             {
@@ -80,15 +80,23 @@ namespace User.Service
         {
             var result = new List<MessageViewModel>();
 
-            var user = (await _userRepository.FindAsync(u => u.Name == command.UserName, include: o => o.Include(u => u.Messages))).FirstOrDefault();
+            var user = (await _userRepository.FindAsync(u => u.Name == command.UserName, include: o => o.Include(u => u.Messages).Include(u => u.FollowedList))).FirstOrDefault();
 
             if (user == null)
                 throw new Exception($"User {command.UserName} not found!");
 
+            MessageViewModel m = new MessageViewModel()
+            {
+                Content = $"{user.Name} wall",
+                UserName = null,
+                Date = null
+            };
+            result.Add(m);
+
             // here would be better to use AutoMapper
             foreach (var message in user.Messages)
             {
-                MessageViewModel m = new MessageViewModel()
+                 m = new MessageViewModel()
                 {
                     Content = message.Content,
                     UserName = command.UserName,
@@ -96,6 +104,31 @@ namespace User.Service
                 };
 
                 result.Add(m);
+            }
+
+            foreach (var followedId in user.FollowedList.Select(f=>f.FollowedId))
+            {
+                var followedUser = (await _userRepository.FindAsync(u => u.Id == followedId, include: o => o.Include(u => u.Messages))).FirstOrDefault();
+
+                m = new MessageViewModel()
+                {
+                    Content = $"{followedUser.Name} wall",
+                    UserName = null,
+                    Date = null
+                };
+                result.Add(m);
+
+                foreach (var message in followedUser.Messages)
+                {
+                    m = new MessageViewModel()
+                    {
+                        Content = message.Content,
+                        UserName = followedUser.Name,
+                        Date = message.Date
+                    };
+
+                    result.Add(m);
+                }
             }
 
             return result;
