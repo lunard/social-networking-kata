@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure\SocialNetworkingKata.Infrastructure\SocialNetworkingKata.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

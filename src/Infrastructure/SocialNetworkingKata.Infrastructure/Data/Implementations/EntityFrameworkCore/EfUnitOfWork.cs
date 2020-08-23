@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SocialNetworkingKata.Infrastructure.Data.Interfaces;
+using System;
 using System.Threading.Tasks;
 
 namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFrameworkCore
@@ -7,9 +9,15 @@ namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFramewo
     public abstract class EfUnitOfWork : IUnitOfWork
     {
         private DbContext _context;
-        public EfUnitOfWork()
+
+        protected readonly IConfiguration _configuration;
+        public EfUnitOfWork(
+            IConfiguration configuration
+            )
         {
+            _configuration = configuration == null ? throw new NotImplementedException() : configuration;
             _context = CreateDbContext();
+
         }
 
         public abstract DbContext CreateDbContext();

@@ -1,14 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Query;
 using SocialNetworkingKata.Infrastructure.Data.Interfaces;
 using SocialNetworkingKata.Infrastructure.Domain;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFrameworkCore
 {
 
-    public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggregateRoot
+    public class EfRepository<T> : IAsyncRepository<T> where T : EntityBase, IAggregateRoot
     {
         private readonly EfUnitOfWork _unitOfWork;
         private readonly DbSet<T> _dbSet;
@@ -16,7 +20,7 @@ namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFramewo
 
         public EfRepository(EfUnitOfWork unitOfWork)
         {
-            _unitOfWork = _unitOfWork == null ? throw new NotImplementedException() : unitOfWork;
+            _unitOfWork = unitOfWork == null ? throw new NotImplementedException() : unitOfWork;
             _dbSet = (_unitOfWork.GetContext() as DbContext).Set<T>();
         }
 
@@ -48,6 +52,38 @@ namespace SocialNetworkingKata.Infrastructure.Data.Implementations.EntityFramewo
             _dbSet.Update(entity);
 
             return Task.CompletedTask;
+        }
+
+        public async Task<IReadOnlyList<T>> FindAsync(
+                                          Expression<Func<T, bool>> predicate,
+                                          Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+                                          Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
+                                          bool disableTracking = true)
+        {
+            IQueryable<T> query = _dbSet;
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            if (orderBy != null)
+            {
+                return await orderBy(query).ToListAsync();
+            }
+            else
+            {
+                return await query.ToListAsync();
+            }
         }
     }
 }

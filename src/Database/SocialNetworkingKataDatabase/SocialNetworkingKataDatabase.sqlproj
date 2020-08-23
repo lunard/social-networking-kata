@@ -60,10 +60,12 @@
     <Folder Include="User\" />
     <Folder Include="User\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="PostDeploymentScripts" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CompareFiles\ProjectToDatabase.scmp" />
     <None Include="CompareFiles\DatabaseToProject.scmp" />
+    <None Include="PostDeploymentScripts\UserPostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="User\Tables\Message.sql" />
