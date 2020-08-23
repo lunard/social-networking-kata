@@ -69,8 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="User\Tables\Message.sql" />
-    <Build Include="User\Tables\Folllower.sql" />
     <Build Include="User\Tables\User.sql" />
     <Build Include="Security\User.sql" />
+    <Build Include="User\Tables\Follower.sql" />
   </ItemGroup>
 </Project>
