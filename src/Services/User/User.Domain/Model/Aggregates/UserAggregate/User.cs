@@ -43,5 +43,19 @@ namespace User.Domain.Model.Aggregates.UserAggregate
                 return false;
             }
         }
+
+        public bool AddFollower(Follower f)
+        {
+            try
+            {
+                _followers.Add(f);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

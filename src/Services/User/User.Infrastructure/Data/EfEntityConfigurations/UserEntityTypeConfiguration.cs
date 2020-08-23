@@ -36,13 +36,13 @@ namespace User.Infrastructure.Data.EfEntityConfigurations
                 .HasMany(u => u.Followers)
                 .WithOne(f => f.FollowerUser)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasForeignKey(o => o.UserId);
+                .HasForeignKey(f => f.FollowerId);
 
             builder
                .HasMany(u => u.FollowedList)
                .WithOne(f => f.FollowedUser)
                .OnDelete(DeleteBehavior.Cascade)
-               .HasForeignKey(o => o.FollowerId);
+               .HasForeignKey(f => f.FollowedId);
 
             builder
               .Metadata

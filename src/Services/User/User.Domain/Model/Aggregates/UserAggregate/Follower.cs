@@ -10,7 +10,7 @@ namespace User.Domain.Model.Aggregates.UserAggregate
     {
         public DateTime DateFrom { get; set; }
 
-        public int UserId { get; set; }
+        public int FollowerId { get; set; }
         public User FollowerUser { get; set; }
         public int FollowedId { get; set; }
         public User FollowedUser { get; set; }

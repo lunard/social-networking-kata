@@ -16,7 +16,7 @@ namespace User.Infrastructure.Data.EfEntityConfigurations
             builder.HasKey(o => o.Id);
             builder.Property<int>("Id").IsRequired();
 
-            builder.Property<int>("UserId").IsRequired();
+            builder.Property<int>("FollowedId").IsRequired();
             builder.Property<int>("FollowerId").IsRequired();
         }
 
