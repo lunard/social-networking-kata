@@ -7,6 +7,8 @@ using User.Domain.Model.Aggregates.UserAggregate;
 using User.Service.Application.Commands;
 using UserModel = User.Domain.Model.Aggregates.UserAggregate.User;
 using FollowerModel = User.Domain.Model.Aggregates.UserAggregate.Follower;
+using System.Collections.Generic;
+using User.Service.Application.ViewModel;
 
 namespace User.Service
 {
@@ -69,6 +71,13 @@ namespace User.Service
             }
 
             return true;
+        }
+
+        public async Task<IEnumerable<MessageViewModel>> ViewTimeline(CommandViewTimeline command)
+        {
+            var result = new List<MessageViewModel>();
+
+            return result;
         }
     }
 }

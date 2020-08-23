@@ -6,7 +6,7 @@ using System.Text;
 
 namespace User.Domain.Model.Aggregates.UserAggregate
 {
-    public class User: EntityBase, IAggregateRoot
+    public class User : EntityBase, IAggregateRoot
     {
         private ICollection<Message> _messages;
         private ICollection<Follower> _followers;
@@ -44,11 +44,12 @@ namespace User.Domain.Model.Aggregates.UserAggregate
             }
         }
 
-        public bool AddFollowed(Follower f)
+        public bool AddFollowed(Follower follower)
         {
             try
             {
-                _followedList.Add(f);
+                if (!_followedList.Any(f => f.FollowedId == follower.FollowedId && f.FollowerId == follower.FollowerId))
+                    _followedList.Add(follower);
 
                 return true;
             }

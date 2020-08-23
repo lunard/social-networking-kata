@@ -24,3 +24,6 @@ Dependency Injection using Autofac
 
 ## What is missing in the User.Service project
 Could be useful to decuple the code execution using the mediator pattern (eg via MediatR)
+
+## What is missing in the Test
+Sure we have to mock the repository (eg via Moq); In this case the test is working directly with the DB (eventually I should bootstrap the DB)
