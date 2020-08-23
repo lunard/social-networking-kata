@@ -6,12 +6,12 @@ using System.Text;
 namespace User.Service.Application.Commands
 {
     [DataContract]
-    public class CommandAddMessage: CommandBase
+    public class CommandPostMessage: CommandBase
     {
         private string _content;
         public String Content => _content;
 
-        public CommandAddMessage(string content, string userName): base (userName)
+        public CommandPostMessage(string content, string userName): base (userName)
         {
             _content = !ValidateContent(content) ? throw new InvalidOperationException("Message content is not valid") : content;
         }
