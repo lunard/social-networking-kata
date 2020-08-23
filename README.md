@@ -1,5 +1,5 @@
 # Social Networking Kata
-Excercise that aims to implement a console-based social networking application (similar to Twitter) satisfying the scenarios below.
+Excercise that aims to implement a console-based social networking application (similar to Twitter) satisfying the scenarios described in the User Stories.
 (See user stories and Task in the public page of my Azure DevOps: https://dev.azure.com/lunard/Social%20Networking%20Kata/_workitems/recentlyupdated/)
 
 # Where I spent my time
